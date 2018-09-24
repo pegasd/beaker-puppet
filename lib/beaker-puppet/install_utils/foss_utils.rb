@@ -1001,7 +1001,11 @@ module Beaker
                   [opts[:release_apt_repo_url], repo_name, codename]
               end
 
+              on host, "ls -ld /tmp"
               on host, "wget -O /tmp/puppet.deb #{remote}"
+              on host, "wget -O ~/puppet.deb #{remote}"
+              on host, "ls -l /tmp/puppet.deb"
+              on host, "ls ~/puppet.deb"
               on host, "dpkg -i --force-all /tmp/puppet.deb"
               on host, "apt-get update"
             else
