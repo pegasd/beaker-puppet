@@ -1007,7 +1007,10 @@ module Beaker
               on host, "dpkg -l"
               on host, "sestatus -v || true"
               on host, "aa-status || true"
+              on host, "id -Z || true"
               on host, "ls -l /tmp/puppet.deb"
+              on host, "ls -laZ /tmp/puppet.deb || true"
+              on host, "ls -Z /tmp/puppet.deb || true"
               on host, "dpkg -i --force-all /tmp/puppet.deb"
               on host, "apt-get update"
             else
