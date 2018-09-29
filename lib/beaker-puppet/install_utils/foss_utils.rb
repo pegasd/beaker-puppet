@@ -1001,18 +1001,11 @@ module Beaker
                   [opts[:release_apt_repo_url], repo_name, codename]
               end
 
-              on host, "ls -ld /tmp"
               on host, "ls -la /etc"
-              on host, "wget -O /tmp/puppet.deb #{remote}"
-              on host, "ls -la /tmp"
+              on host, "wget -O ~/puppet.deb #{remote}"
               on host, "dpkg -l"
-              on host, "sestatus -v || true"
-              on host, "aa-status || true"
-              on host, "id -Z || true"
-              on host, "ls -l /tmp/puppet.deb"
-              on host, "ls -laZ /tmp/puppet.deb || true"
-              on host, "ls -Z /tmp/puppet.deb || true"
-              on host, "dpkg -i --force-all /tmp/puppet.deb"
+              on host, "ls -lZ ~/puppet.deb"
+              on host, "dpkg -i --force-all ~/puppet.deb"
               on host, "apt-get update"
             else
               raise "No repository installation step for #{variant} yet..."
