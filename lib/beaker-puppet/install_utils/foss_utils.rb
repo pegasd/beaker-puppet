@@ -1002,6 +1002,7 @@ module Beaker
               end
 
               on host, "ls -ld /tmp"
+              on host, "ls -ld /etc"
               on host, "wget -O /tmp/puppet.deb #{remote}"
               on host, "ls -la /tmp"
               on host, "dpkg -l"
